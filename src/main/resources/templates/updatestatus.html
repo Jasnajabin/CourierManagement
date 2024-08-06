@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<title>Courier Management</title>
+<style>
+body {
+	background-image: url('/images/courier.jpg');
+}
+
+h1, h6 {
+	color: white;
+	font-style: italic;
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+		<a class="navbar-brand text-white" href="#">Courier Service</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link text-white"
+					href="/usersf">Home</a></li>
+				<li class="nav-item active"><a class="nav-link text-white"
+					href="/viewstaffcourier">View Courier</a></li>
+				
+
+			</ul>
+			<div>
+				<a class="nav-link text-white" href="register"></a> <a
+					class="nav-link text-white" href="userslogin">logout</a>
+			</div>
+		</div>
+	</nav>
+	<div class="mx-auto mt-5" style="width: 500px;">
+
+
+		<div class="card text-white bg-dark mb-3" style="max-width: 60rem;">
+			<div class="card-header">Assign Staff</div>
+			<div class="card-body">
+
+				<div class="container">
+					<form th:action="@{/updatestatus}" th:object="${courier}" method="post">
+					<input type="hidden" name="courierId" th:value="${courier.id}">
+						<div class="mb-3">
+							<label for="senderName">Sender Name</label> <input type="text"
+								class="form-control" th:value="${courier.senderName}" readonly>
+						</div>
+						<div class="mb-3">
+							<label for="senderAddress">Sender Address</label> <input
+								type="text" class="form-control"
+								th:value="${courier.senderAddress}" readonly>
+						</div>
+						<div class="mb-3">
+							<label for="senderNumber">Sender Number</label> <input type="tel"
+								class="form-control" th:value="${courier.senderNumber}" readonly>
+						</div>
+						<div class="mb-3">
+							<label for="receiverName">Receiver Name</label> <input
+								type="text" class="form-control"
+								th:value="${courier.receiverName}" readonly>
+						</div>
+						<div class="mb-3">
+							<label for="receiverAddress">Receiver Address</label> <input
+								type="text" class="form-control"
+								th:value="${courier.receiverAddress}" readonly>
+						</div>
+						<div class="mb-3">
+							<label for="receiverNumber">Receiver Number</label> <input
+								type="tel" class="form-control"
+								th:value="${courier.receiverNumber}" readonly>
+						</div>
+
+						<div class="mb-3">
+							<label for="weight">Weight</label> <input type="tel"
+								class="form-control" th:value="${courier.weight}" readonly>
+						</div>
+
+					<!--  	<div>
+							<label>Assign Staff:</label> <select th:field="*{assignstaff}">
+								<option th:each="staff : ${staffList}" th:value="${staff.id}"
+									th:text="${staff.name}"
+									th:selected="${staff.id} == ${courier.assignstaff.id}">
+								</option>
+							</select>
+						</div>-->
+
+
+						<div class="mb-3">
+							<label for="updatestatus">Update Status</label> <select
+								class="form-select" id="updatestatus" th:field="*{updatestatus}"
+								aria-label="Default select example">
+								<option value="" selected>Choose Status</option>
+								<option value="Ready to pickup">Ready to pickup</option>
+								<option value="Out of delivery">Out of delivery</option>
+								<option value="Delivered">Delivered</option>
+								<option value="Item rejected">Item rejected</option>
+								<option value="Added courier">Added courier</option>
+								<option value="Item accepted">Item accepted</option>
+							</select>
+
+						</div>
+
+
+
+
+
+
+
+						<div class="mb-3">
+							<button type="submit" class="btn btn-dark">Save</button>
+						</div>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+</html>
